@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Order_process_book extends Order_process{
 
-	public Product orderproduct (Connection connect, ArrayList <String> details ) {
+	public void orderproduct (Connection connect, ArrayList <String> details,Cart cart ) {
 		
 		
     
@@ -17,6 +17,7 @@ public class Order_process_book extends Order_process{
     		ResultSet resultSet;
 			resultSet = statement.executeQuery(
 			    "select * from product_catalog");
+			boolean check = false;
 			
 			while (resultSet.next()) {
 				
@@ -29,11 +30,13 @@ public class Order_process_book extends Order_process{
 										
 										
 											ProductFactory bookfactory = new BookFactory ();
+											CartAdd add = new CartAdd();
 											Product book = bookfactory.createproduct(details.get(1), 
 													details.get(2), details.get(3), details.get(4), details.get(5),
 													resultSet.getDouble("price"));
-											return book;
-										
+											add.addtocart(book, cart);
+											check= true;
+											break;
 										
 										
 										
@@ -43,7 +46,15 @@ public class Order_process_book extends Order_process{
 							}
 						}
 					}
+				
+					
+				
 				}
+			if (check == false) {
+				System.out.println("No such product exists in the catalog.  Please type "
+						+ "every detail listed on the catalog to get the product.");
+			}
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,7 +65,7 @@ public class Order_process_book extends Order_process{
         
         int product_id;
         String product_name;
-        System.out.println("No such product exists in the catalog.");
-		return null;
+        //System.out.println("No such product exists in the catalog.");
+		//return null;
 	}
 }

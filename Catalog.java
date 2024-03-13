@@ -24,7 +24,7 @@ public class Catalog {
 	        while(resultSet.next()) {
 	        	if (resultSet.getString("Product_Variant").equalsIgnoreCase("Book")) {
 	        		System.out.println(
-	        				"Product ID: "+resultSet.getInt("product_id")+ "\n"+
+	        				
 	        				"Product type: "+ resultSet.getString("Product_Variant")
 	        				+" "+ resultSet.getString("product_name")
 	        				+"\nCost: "+resultSet.getDouble("price") +"\n"
@@ -32,7 +32,7 @@ public class Catalog {
 	        	}
 	        	price += resultSet.getDouble("price");
 	        }
-	        System.out.println("Total cost is $" + price);
+	        //System.out.println("Total cost is $" + price);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

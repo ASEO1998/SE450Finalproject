@@ -6,31 +6,31 @@ public class MainClass {
 	public static void main(String[] args) {
 		
 		//Singleton section
-		
-		ShoppingCartInstance carttest = ShoppingCartInstance.makeCart();
-		int yen = carttest.getTest();
-		//System.out.println(yen);
-		//ShoppingCartInstance carttest2 = ShoppingCartInstance.makeCart();
-		
-		
 		ArrayList<Product> products = new ArrayList();
+		ShoppingCartInstance carttest = ShoppingCartInstance.makeCart("Aaron","password", 123, products);
+		//int yen = carttest.getTest();
+		//System.out.println(yen);
+		carttest = ShoppingCartInstance.makeCart(null, null, 0, products);
 		
-		ProductFactory bookfactory = new BookFactory ();
-		Product book = bookfactory.createproduct("Harry Potter", "J.K. Rowling", "bought", "second", "digital",100.90);
+		
+		
+		
+//		ProductFactory bookfactory = new BookFactory ();
+//		Product book = bookfactory.createproduct("Harry Potter", "J.K. Rowling", "bought", "second", "digital",100.90);
 		
 		//book.preview();
 		
 		
-		CartBuilder builder = new CartBuilderConcrete();
-		CartDirector director = new CartDirector(builder);
-		Cart cart = director.createCart("Aaron", "password",123,products);
+//		CartBuilder builder = new CartBuilderConcrete();
+//		CartDirector director = new CartDirector(builder);
+		Cart cart = carttest.getCart();
 		
 		//System.out.println(cart.getUsername());
 		CartAdd addtocart = new CartAdd();
 		//director.additem(book);
 		//addtocart.addtocart(book, cart);
-		products = cart.getProducts();
-		book = bookfactory.createproduct("Hunger games", "Raymond", "rented", "first", "digital",99.99);
+		//products = cart.getProducts();
+		//book = bookfactory.createproduct("Hunger games", "Raymond", "rented", "first", "digital",99.99);
 		//addtocart.addtocart(book, cart);
 		//director.additem(book);
 		
@@ -54,10 +54,12 @@ public class MainClass {
 		details.add("Bought");
 		details.add("first edition");
 		details.add("print");
-		book = newproduct.orderproduct(connect, details);
-		if (book != null) {
-			addtocart.addtocart(book, cart);
-		}
+		newproduct.orderproduct(connect, details,cart);
+		//newproduct.orderproduct(connect, details,cart);
+//		if (book != null) {
+//			addtocart.addtocart(book, cart);
+//		}
+		
 		
 		
 		for(int i = 0; i < products.size(); i++) {
@@ -70,8 +72,8 @@ public class MainClass {
 			//add.addtoCatalog_Book(123456, cart.getUsername(), cart.getPassword() , connect, products.get(i), price);
 		}
 //		
-//		Catalog catalog = new Catalog();
-//		catalog.catalog_display(connect);
+		Catalog catalog = new Catalog();
+		catalog.catalog_display(connect);
 //		Catalog_Remove remove = new Catalog_Remove();
 //		remove.remove_from_catalog(18, connect);
 //		catalog.catalog_display(connect);
