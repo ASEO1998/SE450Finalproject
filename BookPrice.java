@@ -6,23 +6,23 @@ public class BookPrice implements ProductPrice{
 	public double price(Product product) {
 		// TODO Auto-generated method stub
 		double price = 0.0;
-		if (((Book)product).getType().equalsIgnoreCase("digital")) {
+		if (((Book)product).get_type().equalsIgnoreCase("digital")) {
 			price += 15.99;
 		}
 		
-		if(((Book)product).getEdition().equalsIgnoreCase("second")) {
+		if(((Book)product).get_size().equalsIgnoreCase("second")) {
 			price += 5.52;
 		}
 		
-		if(((Book)product).getEdition().equalsIgnoreCase("third")) {
+		if(((Book)product).get_size().equalsIgnoreCase("third")) {
 			price += 8.67;
 		}
 		
-		if (((Book)product).getEdition().equalsIgnoreCase("fourth")) {
+		if (((Book)product).get_size().equalsIgnoreCase("fourth")) {
 			price+=11.21;
 		}
 		
-		if(((Book)product).getFeature().equalsIgnoreCase("bought")){
+		if(((Book)product).get_size().equalsIgnoreCase("bought")){
 			price+=12.99;
 		}
 		price += 15.99;

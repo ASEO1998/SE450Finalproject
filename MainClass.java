@@ -16,7 +16,7 @@ public class MainClass {
 		ArrayList<Product> products = new ArrayList();
 		
 		ProductFactory bookfactory = new BookFactory ();
-		Product book = bookfactory.createproduct("Harry Potter", "J.K. Rowling", null, "bought", "second", "digital", false);
+		Product book = bookfactory.createproduct("Harry Potter", "J.K. Rowling", "bought", "second", "digital",100.90);
 		
 		//book.preview();
 		
@@ -28,10 +28,10 @@ public class MainClass {
 		//System.out.println(cart.getUsername());
 		CartAdd addtocart = new CartAdd();
 		//director.additem(book);
-		addtocart.addtocart(book, cart);
+		//addtocart.addtocart(book, cart);
 		products = cart.getProducts();
-		book = bookfactory.createproduct("Hunger games", "Raymond", null, "rented", "first", "digital", false);
-		addtocart.addtocart(book, cart);
+		book = bookfactory.createproduct("Hunger games", "Raymond", "rented", "first", "digital",99.99);
+		//addtocart.addtocart(book, cart);
 		//director.additem(book);
 		
 		
@@ -45,14 +45,28 @@ public class MainClass {
 		}
 		CatalogBook_add add = new CatalogBook_add();
 		
+		Order_process newproduct = new Order_process_book();
+		
+		ArrayList<String> details = new ArrayList(6);
+		details.add("Book");
+		details.add("Harry Potter");
+		details.add("J.K. Rowling");
+		details.add("Bought");
+		details.add("first edition");
+		details.add("print");
+		book = newproduct.orderproduct(connect, details);
+		if (book != null) {
+			addtocart.addtocart(book, cart);
+		}
+		
 		
 		for(int i = 0; i < products.size(); i++) {
 			//products.get(i).preview();
 			BookPreview view = new BookPreview();
 			view.preview(products.get(i));
-			BookPrice bookprice = new BookPrice();
-			price = bookprice.price(products.get(i));
-			System.out.println("Cost of this product is $"+price +"\n");
+			//BookPrice bookprice = new BookPrice();
+			//price = bookprice.price(products.get(i));
+			//System.out.println("Cost of this product is $"+price +"\n");
 			//add.addtoCatalog_Book(123456, cart.getUsername(), cart.getPassword() , connect, products.get(i), price);
 		}
 //		
