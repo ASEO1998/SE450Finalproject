@@ -10,7 +10,7 @@ public class CatalogBook_add {
 		"INSERT INTO product_catalog (customer_id, product_variant, price,product_name, username,passwords)"+
 			"VALUES('" + id +"', " + "'Book',"
 					+ "' " + price+ "', "
-					+ "'" + ((Book)product).getName() + "'," 
+					+ "'" + ((Book)product).get_name() + "'," 
 					+"'" + username + "',"
 					+"'" + password + "'"
 					+ ")"

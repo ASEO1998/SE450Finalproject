@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class CartRemove {
 
-public void removefromcart(Product product, Cart cart) {
+public void removefromcart(Product product, ShoppingCartInstance cart) {
 		
-		ArrayList<Product> productlist = cart.getProducts();
+		ArrayList<Product> productlist = cart.getCart().getProducts();
 		productlist.remove(product);
-		cart.setProducts(productlist);
+		cart.getCart().setProducts(productlist);
 	}
 }
