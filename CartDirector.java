@@ -18,7 +18,7 @@ public class CartDirector {
 				.build();
 	}
 	
-//	public void additem(Product product) {
-//		cartbuilder.add(product);
-//	}
+	public void additem(Product product) {
+		cartbuilder.add(product);
+	}
 }
