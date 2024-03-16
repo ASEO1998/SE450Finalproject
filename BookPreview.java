@@ -6,12 +6,13 @@ public class BookPreview implements ProductPreview{
 	public void preview(Product product) {
 		// TODO Auto-generated method stub
 		System.out.println(
-				((Book)product).getName()+
-				"; By " + ((Book) product).getAuthor() +"\n"
-				+((Book)product).getEdition() +" edition\n"
-				+"Copy is " + ((Book)product).getType() +" type\n"
-				+"This is a " + ((Book)product).getFeature() + " version"
-				);
+				"ProductID: "+product.getProduct_id() + "\n"+
+				((Book)product).get_name()+
+				"; By " + ((Book) product).get_credit() +"\n"
+				+((Book)product).get_size() +" edition\n"
+				+"Copy is " + ((Book)product).get_type() +" type\n"
+				+"This is a " + ((Book)product).get_features() + " version"
+				+"\nCost: " + ((Book)product).get_price() + "\n") ;
 		
 	}
 

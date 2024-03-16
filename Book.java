@@ -5,9 +5,12 @@ public class Book implements Product{
 	private String name;
 	private String author;
 	private String edition;
+	private String variant;
 	private String type;
 	private double price = 0.0;
 	private String feature;
+	private int product_id;
+	
 	
 //	private void pricetotal(String type, String edition,String feature) {
 //		
@@ -27,61 +30,81 @@ public class Book implements Product{
 //		
 //	}
 	
-	public Book (String titlename, String author, String type, String edition,String feature) {
+	
+
+
+
+	public Book (String variant, String titlename, String author, String feature,String edition,String type,double price) {
 		this.name = titlename;
 		this.author = author;
 		this.type = type;
 		this.edition = edition;
 		this.feature = feature;
+		this.price = price;
+		this.variant = variant;
 		//pricetotal(type,edition,feature);
 	}
 	
 
-//	@Override
-//	public void preview() {
-//		// TODO Auto-generated method stub
-//		System.out.println(name + "; " + author + " " + edition + " edition." +
-//		type + " copy.\n "+ "Cost: $" + price );
-//	}
 
-	public String getName() {
+	@Override
+	public String get_variant() {
+		// TODO Auto-generated method stub
+		return variant;
+	}
+
+
+	@Override
+	public String get_name() {
+		// TODO Auto-generated method stub
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public String getAuthor() {
+	@Override
+	public String get_credit() {
+		// TODO Auto-generated method stub
 		return author;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
 
-	public String getEdition() {
-		return edition;
-	}
-
-	public void setEdition(String edition) {
-		this.edition = edition;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getFeature() {
+	@Override
+	public String get_features() {
+		// TODO Auto-generated method stub
 		return feature;
 	}
 
-	public void setFeature(String feature) {
-		this.feature = feature;
+
+	@Override
+	public String get_type() {
+		// TODO Auto-generated method stub
+		return type;
+	}
+
+
+	@Override
+	public Double get_price() {
+		// TODO Auto-generated method stub
+		return price;
+	}
+
+
+
+	@Override
+	public String get_size() {
+		// TODO Auto-generated method stub
+		return edition;
+	}
+	
+	@Override
+	public int getProduct_id() {
+		return product_id;
+	}
+
+
+	@Override
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 
 //	@Override
