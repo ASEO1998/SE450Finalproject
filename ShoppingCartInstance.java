@@ -1,18 +1,24 @@
 package finalproject;
 
+import java.util.ArrayList;
+
 public class ShoppingCartInstance {
-	private int test;
+	
 	private Cart CART;
-	private ShoppingCartInstance() {
+	private ShoppingCartInstance(String username, String password, int id, ArrayList<Product> products) {
 		System.out.println("New cart made!");
-		test = 7;
+		//test = 7;
+		CartBuilder builder = new CartBuilderConcrete();
+		CartDirector director = new CartDirector(builder);
+		Cart cart = director.createCart(username, password,id,products);
+		CART = cart;
 		
 	}
 	private static ShoppingCartInstance cart;
 	
-	public static ShoppingCartInstance makeCart() {
+	public static ShoppingCartInstance makeCart(String username, String password,int id, ArrayList<Product> products) {
 		if (cart == null) {
-			cart = new ShoppingCartInstance();
+			cart = new ShoppingCartInstance(username, password, id, products);
 		}
 		else {
 			System.out.println("No new cart made.");
@@ -20,12 +26,10 @@ public class ShoppingCartInstance {
 		return cart;
 	}
 
-	public int getTest() {
-		return test;
+	public Cart getCart() {
+		return CART;
 	}
 
-	public void setTest(int test) {
-		this.test = test;
-	}
+
 	
 }

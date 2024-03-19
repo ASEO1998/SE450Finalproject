@@ -6,12 +6,12 @@ import java.sql.Statement;
 
 public class Catalog_Remove {
 	
-	public void remove_from_catalog(int productid,Connection connect) {
+	public void remove_from_catalog(Connection connect) {
 		try {
 			Statement st = connect.createStatement();
 			
 			st.executeUpdate("DELETE FROM product_catalog "
-					+ "WHERE product_id = " + productid +";"
+					+ "WHERE product_id = " +";"
 					);
 		
 			//connect.close();

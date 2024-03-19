@@ -1,8 +1,9 @@
 package finalproject;
 
 public interface ProductFactory {
-	Product createproduct (String ProductName, String credit, String color,
-			String features,String size,
-			String type,
-			Boolean extraFeatures);
+	Product createproduct (String variant, String name,
+			String credit,String features,
+			String size
+			,String type ,double price
+			);
 }

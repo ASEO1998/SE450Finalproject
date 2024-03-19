@@ -8,11 +8,12 @@ public class Cart {
 	private ArrayList<Product> products;
 	private int ID;
 	
+	
 	public int getID() {
 		return ID;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setID(int id) {
+		ID = id;
 	}
 	public String getUsername() {
 		return username;
