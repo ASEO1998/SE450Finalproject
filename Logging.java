@@ -12,7 +12,7 @@ public class Logging {
 			String products = "List of Product in cart:\n ";
 			ArrayList<Product> list = cart.getCart().getProducts();
 			for(int i = 0; i < list.size(); i++) {
-				products = products.concat(list.get(i).get_name() +" " + list.get(i).get_price() + "\n");
+				products = products.concat(list.get(i).get_name() +"  " + list.get(i).get_price() + "\n");
 			}
 			
 				statement.executeUpdate(

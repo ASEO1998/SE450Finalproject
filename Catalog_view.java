@@ -15,10 +15,7 @@ public class Catalog_view {
 			ResultSet resultSet;
         
 	        resultSet = statement.executeQuery(
-	            "select * from product_catalog WHERE username = '"+
-	            cart.getCart().getUsername() + "' AND passwords = '"
-	            + cart.getCart().getPassword() + "' AND customer_id = '"
-	            + cart.getCart().getID() + "' "
+	            "select * from product_catalog"
 	        		);
 
 	        
