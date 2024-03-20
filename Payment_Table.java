@@ -36,7 +36,7 @@ public class Payment_Table {
 						+ " username = '" + cart.getCart().getUsername() +"' AND "
 			    + " passwords = '" +cart.getCart().getPassword() + "' AND"
 			    + " customer_id = '" + cart.getCart().getID() + "' AND"
-			    + " payment_type = '" + "Credit" + "' "
+			    + " payment_type = '" + paymenttype + "' "
 						+ "");
 				
 				statement.executeUpdate("Commit");

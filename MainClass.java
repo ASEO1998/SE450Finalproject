@@ -19,7 +19,14 @@ public class MainClass {
 		int customer_id;
 		CartAdd add = new CartAdd();
 		DBConnection db = new DBConnection();
-		Connection connect = db.connect("root", "Ll22772033$");
+		System.out.println("type in username for your mysql db connection");
+		
+		String userdb = userinput.next();
+		
+		System.out.println("type in password for your mysql db connection");
+		
+		String passdb = userinput.next();
+		Connection connect = db.connect(userdb, passdb);
 		Copying_process restore = new Copying_process();
 		Boolean admin = false;
 		System.out.println("Type username");
@@ -62,14 +69,14 @@ public class MainClass {
 		}
 		userinput = new Scanner(System.in);
 		String option = "";
-		
+		if (connect != null) {
 		while(!(option.equalsIgnoreCase("exit"))) {
 			userinput = new Scanner(System.in);
 			System.out.println("Type in the following numbers:\n"
 					+ "1: Make a deposit with a payment type.\n"
 					+ "2: Display all your products in the cart.\n"
 					+ "3: Show the current product catalog.\n"
-					+ "4: Order and create a new product of your choosing.  This is only for admins\n"
+					+ "4: Order and create a new product of your choosing for the catalog.  This is only for admins\n"
 					+ "5: Make a payment now for all your products in the cart.\n"
 					+ "6: View your events and transaction log\n"
 					+ "7: Remove a product from your cart.\n"
@@ -117,7 +124,7 @@ public class MainClass {
 				
 				
 				ArrayList<String> details = new ArrayList(6);
-				System.out.println("What kind of product do you want. A Book, electronic, or clothes.  Type any of those three");
+				System.out.println("What kind of product do you want to make? A Book, electronic, or clothes.  Type any of those three");
 				userinput = new Scanner(System.in);
 				String variant = "";
 				while (!((variant.equalsIgnoreCase("book")) || (variant.equalsIgnoreCase("clothes") || (variant.equalsIgnoreCase("electronic"))))) {
@@ -144,7 +151,7 @@ public class MainClass {
 				String features = "";
 				if (variant.equalsIgnoreCase("book")) {
 					System.out.println("Do you want to buy the book or rent it?. Type bought or rental");
-					while (!((features.equalsIgnoreCase("bought")) | (features.equalsIgnoreCase("rental")) 
+					while (!((features.equalsIgnoreCase("bought")) || (features.equalsIgnoreCase("rental")) 
 							)) {
 						features = userinput.next();
 					}
@@ -152,7 +159,7 @@ public class MainClass {
 				
 				else if (variant.equalsIgnoreCase("electronic")) {
 					System.out.println("Do you want the quality of the electornic to be high or just regular. Type high or regular");
-					while (!((features.equalsIgnoreCase("High quality")) | (features.equalsIgnoreCase("regular quality")) 
+					while (!((features.equalsIgnoreCase("High quality")) || (features.equalsIgnoreCase("regular quality")) 
 							)) {
 						features = userinput.next() + " quality";
 					}
@@ -160,10 +167,18 @@ public class MainClass {
 				
 				else if (variant.equalsIgnoreCase("clothes")) {
 					System.out.println("What features do you want for this cloth? Pockets, buttons or none?");
-					while (!((features.equalsIgnoreCase("none")) | (features.equalsIgnoreCase("buttons") | (features.equalsIgnoreCase("pockets")
-							)))) {
+					boolean t = true;
+					while(t == true) {
 						features = userinput.next();
+						if (((features.equalsIgnoreCase("none")) || (features.equalsIgnoreCase("buttons") || (features.equalsIgnoreCase("pockets")
+								)))) {
+							break;
+						}
 					}
+//					while (!((features.equalsIgnoreCase("none")) | (features.equalsIgnoreCase("buttons") | (features.equalsIgnoreCase("pockets")
+//							)))) {
+//						features = userinput.next();
+//					}
 				}
 				
 				details.add(features);
@@ -171,19 +186,36 @@ public class MainClass {
 				userinput = new Scanner(System.in);
 				String size = "";
 				if (variant.equalsIgnoreCase("book")) {
+					while (true) {
+						
 					System.out.println("Which book editions do you want. First, second, third, or fourth? Type in any of these editions.");
-					while (!((size.equalsIgnoreCase("first")) || (size.equalsIgnoreCase("second") | (size.equalsIgnoreCase("third") ||
+					size = userinput.next();
+					if (((size.equalsIgnoreCase("first")) || (size.equalsIgnoreCase("second") || (size.equalsIgnoreCase("third") ||
 							(size.equalsIgnoreCase("fourth")))))) {
-						size = userinput.next();
+						break;
+					}
+//					while (!((size.equalsIgnoreCase("first")) || (size.equalsIgnoreCase("second") | (size.equalsIgnoreCase("third") ||
+//							(size.equalsIgnoreCase("fourth")))))) {
+//						size = userinput.next();
+//					}
 					}
 				}
 				else {
-					userinput = new Scanner(System.in);
+					
 					System.out.println("What size do you want. Small, regular, large, XL? Type in any of these sizes.");
-					while (!((size.equalsIgnoreCase("small")) || (variant.equalsIgnoreCase("regular") || (variant.equalsIgnoreCase("large") |
-							(size.equalsIgnoreCase("XL")))))) {
+					while(true) {
+						userinput = new Scanner(System.in);
 						size = userinput.next();
+						if(size.equalsIgnoreCase("small") || size.equalsIgnoreCase("regular") || size.equalsIgnoreCase("large") |
+								size.equalsIgnoreCase("XL")) {
+							break;
+						}
 					}
+					
+//					while (!((size.equalsIgnoreCase("small")) || (variant.equalsIgnoreCase("regular") || (variant.equalsIgnoreCase("large") |
+//							(size.equalsIgnoreCase("XL")))))) {
+//						size = userinput.next();
+//					}
 				}
 				
 				details.add(size);
@@ -208,10 +240,18 @@ public class MainClass {
 				
 				else if (variant.equalsIgnoreCase("clothes")) {
 					System.out.println("What do you want this cloth to be made of? Wool, cotton, linen ");
-					while (!((type.equalsIgnoreCase("cotton")) || (type.equalsIgnoreCase("linen") || (type.equalsIgnoreCase("wool") 
-							)))) {
+					while (true) {
 						type= userinput.next();
+						if (((type.equalsIgnoreCase("cotton")) || (type.equalsIgnoreCase("linen") || (type.equalsIgnoreCase("wool") 
+								)))) {
+							break;
+						}
+						
 					}
+//					while (!((type.equalsIgnoreCase("cotton")) || (type.equalsIgnoreCase("linen") || (type.equalsIgnoreCase("wool") 
+//							)))) {
+//						type= userinput.next();
+//					}
 				}
 				details.add(type);
 								
@@ -330,7 +370,7 @@ public class MainClass {
 		}
 		
 		
-
+	}
 	}
 	
 

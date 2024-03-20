@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 class Product_CatalogTest {
 	Product_catalog_abstract catalog;
 	DBConnection db = new DBConnection();
+	/*Replace the strings for the connection with your username and password for the mysql database.*/
 	Connection connect = db.connect("root", "Ll22772033$");
 	String username = "TestUser";
 	String password = "Testpassword";
